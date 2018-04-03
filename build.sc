@@ -15,6 +15,12 @@ object base extends ScalaModule {
 //    "-Xfatal-warnings"
   )
 
+  def compile = T {
+    println("Sources to compile: ")
+    listSources().foreach(println)
+    super.compile()
+  }
+
   def listSources = T {
     sources().map(_.path).flatMap(ls.rec)
   }

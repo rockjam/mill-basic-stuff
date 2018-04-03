@@ -1,3 +1,3 @@
 object Main extends App {
-  println("hello world")
+  println(fansi.Color.Green("hello world"))
 }

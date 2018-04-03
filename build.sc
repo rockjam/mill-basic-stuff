@@ -1,4 +1,5 @@
-import mill._, scalalib._
+import mill._
+import scalalib._
 import ammonite.ops._
 
 object base extends ScalaModule {
@@ -8,7 +9,12 @@ object base extends ScalaModule {
     ivy"com.lihaoyi::fansi:0.2.5",
     ivy"org.scala-lang:scala-reflect:${scalaVersion()}"
   )
-  
+
+  def scalacOptions = super.scalacOptions() ++ Seq(
+    "-Ywarn-unused:_",
+//    "-Xfatal-warnings"
+  )
+
   def listSources = T {
     sources().map(_.path).flatMap(ls.rec)
   }

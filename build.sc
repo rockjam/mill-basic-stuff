@@ -1,8 +1,9 @@
 import mill._
 import scalalib._
 import ammonite.ops._
+import $file.reformat
 
-object base extends ScalaModule {
+object base extends ScalaModule with reformat.ScalafmtSupport {
   def scalaVersion = T { "2.12.4" }
 
   def ivyDeps = Agg(
@@ -16,8 +17,7 @@ object base extends ScalaModule {
   )
 
   def compile = T {
-    println("Sources to compile: ")
-    listSources().foreach(println)
+    reformat()
     super.compile()
   }
 

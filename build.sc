@@ -6,6 +6,11 @@ import $file.reformat
 object base extends ScalaModule with reformat.ScalafmtSupport {
   def scalaVersion = T { "2.12.4" }
 
+  object test extends Tests {
+    def testFrameworks = Seq("utest.runner.Framework")
+    def ivyDeps = Agg(ivy"com.lihaoyi::utest:0.6.3")
+  }
+
   def ivyDeps = Agg(
     ivy"com.lihaoyi::fansi:0.2.5",
     ivy"org.scala-lang:scala-reflect:${scalaVersion()}"

@@ -2,8 +2,9 @@ import mill._
 import scalalib._
 import ammonite.ops._
 import $file.reformat
+import $file.packager
 
-object base extends BaseModule {
+object base extends BaseModule with packager.Packager {
   def moduleDeps = Seq(models)
 
   def mainClass = Some("Main")

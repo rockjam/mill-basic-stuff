@@ -6,6 +6,8 @@ import $file.reformat
 object base extends ScalaModule with reformat.ScalafmtSupport {
   def scalaVersion = T { "2.12.4" }
 
+  def mainClass = Some("Main")
+
   object test extends Tests {
     def testFrameworks = Seq("utest.runner.Framework")
     def ivyDeps = Agg(ivy"com.lihaoyi::utest:0.6.3")
